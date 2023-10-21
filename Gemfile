@@ -29,3 +29,8 @@ group :test do
   gem "webdrivers"
   gem "i18n"
 end
+source 'https://rubygems.org'
+
+gem 'sinatra'
+gem 'puma'
+
