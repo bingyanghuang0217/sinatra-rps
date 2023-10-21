@@ -15,12 +15,7 @@ get '/' do
 end
 
 
-require 'sinatra'
-require 'sinatra/reloader' if development?
 
-get '/' do
-  erb :index
-end
 
 get '/rock' do
   @computer_choice = ['rock', 'paper', 'scissors'].sample
