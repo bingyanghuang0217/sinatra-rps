@@ -34,3 +34,5 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'puma'
 
+bundle install
+

@@ -14,16 +14,33 @@ get '/' do
   erb :index
 end
 
-post '/play' do
-  player_choice = params['choice']
-  computer_choice = ['rock', 'paper', 'scissors'].sample
 
-  result = determine_winner(player_choice, computer_choice)
+require 'sinatra'
+require 'sinatra/reloader' if development?
 
-  erb :result, locals: { player_choice: player_choice, computer_choice: computer_choice, result: result }
+get '/' do
+  erb :index
 end
 
-def determine_winner(player, computer)
+get '/rock' do
+  @computer_choice = ['rock', 'paper', 'scissors'].sample
+  @result = determine_outcome('rock', @computer_choice)
+  erb :rock
+end
+
+get '/paper' do
+  @computer_choice = ['rock', 'paper', 'scissors'].sample
+  @result = determine_outcome('paper', @computer_choice)
+  erb :paper
+end
+
+get '/scissors' do
+  @computer_choice = ['rock', 'paper', 'scissors'].sample
+  @result = determine_outcome('scissors', @computer_choice)
+  erb :scissors
+end
+
+def determine_outcome(player, computer)
   return 'It\'s a draw!' if player == computer
 
   case player
@@ -35,4 +52,3 @@ def determine_winner(player, computer)
     computer == 'paper' ? 'You win!' : 'Computer wins!'
   end
 end
-
